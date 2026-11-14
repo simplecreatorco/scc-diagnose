@@ -197,7 +197,6 @@ h1:focus, h1:focus-visible { outline: none; }
 .tighten ul { margin-top: 12px; display: grid; gap: 10px; }
 .tighten li { position: relative; padding-left: 16px; line-height: 1.55; }
 .tighten li::before { content: ""; position: absolute; left: 0; top: .66em; width: 6px; height: 6px; border-radius: 50%; background: var(--dusty); }
-
 .wrap { text-align: center; padding: 28px 22px; }
 .wrap p { max-width: 460px; margin: 0 auto; }
 .actions { display: grid; gap: 10px; margin: 20px auto 0; max-width: 360px; }
@@ -389,9 +388,8 @@ h1:focus, h1:focus-visible { outline: none; }
     mtsL: { name: 'Made to Sell', use: "Module 2 sets up your checkout page and delivery. Module 3 gets it published." },
     hacks: { name: '6-Figure Branding Hacks', use: "The tools and shortcuts I use to pick colors and fonts and get a professional look, fast." },
     clarity: { name: 'Product Clarity Worksheet', use: "Get clear on what you made and who it's for before you write a word of copy." },
-    ideabot: { name: 'AI Product Idea Generator', use: "Tell it what you made and who it's for, then ask what that person is already trying to fix." },
+    ideabot: { name: 'Custom Idea Generator', use: "Tell it what you made and who it's for, then ask what that person is already trying to fix." },
     ideas500: { name: '500 Digital Product Ideas', use: "Skim the ideas close to yours and notice which problems keep coming up." },
-    pricing: { name: 'Pricing Calculator', the: true, use: "Tell it what you made and what you want to earn. It gives you a price and how many sales it takes to get there.", href: 'https://pricing.thesimplecreator.com', cta: 'Open the Pricing Calculator' },
     fasttrack: { name: 'Fast-Track Creation Companion', use: "You bring the idea. It helps you shape it, outline it and get it finished." },
     books: { name: 'Bookkeeping Spreadsheet Template', use: "Log your sales and what you spend, so you always know where your money's going." }
   };
@@ -509,7 +507,7 @@ h1:focus, h1:focus-visible { outline: none; }
       ],
       steps: [
         "Write down the last three things people around you complained about that your product helps with. (Can't think of any? Ask in your stories!)",
-        "Open your AI Product Idea Generator. Tell it what you made and who it's for, then ask what that person is already trying to fix.",
+        "Open your Custom Idea Generator. Tell it what you made and who it's for, then ask what that person is already trying to fix.",
         "Rewrite your headline so it opens with her complaint."
       ],
       items: ['ideabot', 'ideas500'],
@@ -522,12 +520,11 @@ h1:focus, h1:focus-visible { outline: none; }
         "They're specific enough to feel deliberate, and low enough to sell to someone who's never heard of you. Yours is a bigger ask than that."
       ],
       steps: [
-        "Open the Pricing Calculator and run your numbers.",
         "Change the price on your checkout page today.",
         "Leave everything else alone for now, so you can tell if the price was the thing."
       ],
-      items: ['pricing'],
-      tighten: "Pricing off your hours can push the number up. Check it in the Pricing Calculator."
+      items: [],
+      tighten: "Pricing off your hours can push the number up."
     },
     PR2: {
       area: 'price', short: 'Your price is a guess.', title: "Your price is a guess.",
@@ -536,11 +533,10 @@ h1:focus, h1:focus-visible { outline: none; }
         "Here's what I teach: $17, $24 or $27 for a first product, and $49 for something bulkier. Specific enough to feel deliberate, low enough for a stranger to say yes."
       ],
       steps: [
-        "Open the Pricing Calculator and tell it what you made and what you want to earn.",
-        "Put the price it gives you on your checkout page."
+        "Put your new price on your checkout page."
       ],
-      items: ['pricing'],
-      tighten: "Run your price through the Pricing Calculator, just to be sure it's on a sweet spot."
+      items: [],
+      tighten: "Check that your price is on a sweet spot."
     },
     F1: {
       area: 'follow', short: 'No way to reach her again.', title: "Interested people slip away.",
@@ -784,7 +780,7 @@ h1:focus, h1:focus-visible { outline: none; }
     for (var b = 0; b < r.body.length; b++) html += '<p>' + esc(r.body[b]) + '</p>';
     html += '</div><h3 class="h3">Your fix</h3><ol class="steps">';
     for (var s = 0; s < r.steps.length; s++) html += '<li>' + esc(r.steps[s]) + '</li>';
-    html += '</ol>' + bundleHTML(r.items) + '</section>';
+    html += '</ol>' + (r.items.length ? bundleHTML(r.items) : '') + '</section>';
     return html;
   }
 
