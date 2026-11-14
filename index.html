@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F2F2F2">
+<title>Why Isn't It Selling? | Simple Creator Co.</title>
+<meta name="description" content="A 13-question quiz that shows you where your digital product sale is getting stuck and what to fix first.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23889CA2'/%3E%3C/svg%3E">
+<style>
+/* Brand fonts, embedded so the tool works offline and makes no outside requests. */
+@font-face { font-family: 'Recoleta'; font-weight: 400; font-style: normal; font-display: swap;
+  src: url('https://simplecreatorco.myshopify.com/cdn/shop/t/4/assets/recoleta-regular.woff2?v=21253715987913751891789045526') format('woff2'); }
+:root {
+  --dusty: #889CA2;
+  --yellow: #F3B548;
+  --coral: #F49C8E;
+  --text: #555555;
+  --white: #FFFFFF;
+  --gray: #F2F2F2;
+  --mint: #EEF6F1;
+  --slate: #5E7278;
+  --line: #DFE6E8;
+  --display: 'Recoleta', 'Fraunces', Georgia, serif;
+  --label: 'Quicksand', Helvetica, Arial, sans-serif;
+  --body: 'Nunito', Helvetica, Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--gray); color: var(--text);
+  font-family: var(--body); font-size: 16px; line-height: 1.7;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3, p, ol, ul { margin: 0; padding: 0; }
+ol, ul { list-style: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+a { color: inherit; }
+[hidden] { display: none !important; }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--slate); outline-offset: 3px; }
+h1:focus, h1:focus-visible { outline: none; }
+
+.shell {
+  min-height: 100vh; min-height: 100dvh;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 20px 16px calc(28px + env(safe-area-inset-bottom));
+}
+.shell--center { justify-content: center; }
+.col { width: 100%; max-width: 600px; }
+.col--wide { max-width: 720px; }
+
+.eyebrow {
+  font-family: var(--label); font-weight: 700; font-size: 11px; line-height: 1.5;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--coral);
+}
+.eyebrow--slate { color: var(--slate); }
+
+.card {
+  background: var(--white); border: 1px solid var(--line); border-radius: 18px;
+  padding: 28px 22px;
+}
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; text-align: center;
+  background: var(--yellow); color: #fff; text-decoration: none;
+  font-family: var(--label); font-weight: 700; font-size: 12px; line-height: 1.4;
+  letter-spacing: 3px; text-transform: uppercase;
+  padding: 17px 30px; border-radius: 50px; min-height: 52px;
+}
+.btn:hover { background: #EFAC35; }
+.pill {
+  display: inline-flex; align-items: center; justify-content: center; text-align: center;
+  background: var(--white); color: var(--dusty); border: 1px solid var(--dusty); text-decoration: none;
+  font-family: var(--label); font-weight: 700; font-size: 12px; line-height: 1.4;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 14px 24px; border-radius: 50px; min-height: 48px;
+}
+.pill:hover { background: #F7F9F9; }
+
+/* ---------- Start ---------- */
+.start { text-align: center; padding: 44px 24px 36px; }
+.start h1 {
+  font-family: var(--display); font-weight: 400; color: var(--dusty);
+  font-size: clamp(40px, 11vw, 56px); line-height: 1.08; margin: 14px 0 22px;
+}
+.start p { max-width: 400px; margin: 0 auto; }
+.start p + p { margin-top: 12px; }
+.start .btn { width: 100%; max-width: 340px; margin-top: 28px; }
+.start .fine { font-size: 14px; color: var(--dusty); margin-top: 16px; }
+.areas { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 8px; margin: 26px auto 0; max-width: 420px; }
+.areas li {
+  font-family: var(--label); font-weight: 700; font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--dusty); border: 1px solid var(--line); border-radius: 50px; padding: 6px 12px; line-height: 1.4;
+}
+
+/* ---------- Quiz ---------- */
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 2px 2px 12px; }
+.topbar .name { font-family: var(--display); font-size: 17px; color: var(--dusty); line-height: 1.2; }
+.count { font-family: var(--label); font-weight: 700; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--slate); white-space: nowrap; }
+.track { height: 6px; background: var(--line); border-radius: 6px; overflow: hidden; margin-bottom: 16px; }
+.track i { display: block; height: 100%; width: 0; background: var(--dusty); border-radius: 6px; transition: width .35s ease; }
+
+.q { padding: 28px 20px 22px; }
+.q h1 {
+  font-family: var(--display); font-weight: 400; color: var(--dusty);
+  font-size: clamp(26px, 7vw, 32px); line-height: 1.2; margin: 10px 0 0;
+}
+.q .help { font-size: 15px; line-height: 1.6; margin-top: 10px; }
+.opts { margin-top: 22px; display: grid; gap: 10px; }
+.opt {
+  display: flex; align-items: flex-start; gap: 14px; width: 100%; text-align: left;
+  background: var(--white); border: 1px solid var(--line); border-radius: 14px;
+  padding: 16px 16px; font-size: 16px; line-height: 1.45; color: var(--text);
+  min-height: 58px; transition: border-color .15s ease, background-color .15s ease;
+}
+.opt .dot {
+  flex: none; width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--dusty);
+  margin-top: 1px; display: grid; place-items: center; background: var(--white);
+}
+.opt .dot::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--dusty); transform: scale(0); transition: transform .15s ease; }
+.opt:hover { border-color: var(--dusty); }
+.opt[aria-pressed="true"] { border-color: var(--dusty); box-shadow: inset 0 0 0 1px var(--dusty); background: #F7F9F9; }
+.opt[aria-pressed="true"] .dot::after { transform: scale(1); }
+.qnav { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; min-height: 44px; }
+.textbtn {
+  font-family: var(--label); font-weight: 700; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--dusty); padding: 12px 6px; min-height: 44px;
+}
+.textbtn:hover { color: var(--slate); }
+.fade { animation: fade .28s ease both; }
+@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* ---------- Results ---------- */
+.results { display: grid; gap: 14px; }
+.rhead { text-align: center; padding: 36px 22px 30px; }
+.rhead h1 {
+  font-family: var(--display); font-weight: 400; color: var(--dusty);
+  font-size: clamp(34px, 9vw, 46px); line-height: 1.12; margin: 12px 0 14px;
+}
+.rhead p { max-width: 500px; margin: 0 auto; }
+.rhead p + p { margin-top: 10px; }
+
+.h2 { font-family: var(--display); font-weight: 400; color: var(--dusty); font-size: clamp(24px, 6.4vw, 30px); line-height: 1.22; }
+.sub { font-size: 15px; line-height: 1.6; margin-top: 6px; }
+
+/* the path */
+.path { margin-top: 22px; position: relative; }
+.path li { position: relative; display: grid; grid-template-columns: 30px 1fr; column-gap: 14px; padding-bottom: 20px; }
+.path li:last-child { padding-bottom: 0; }
+.path li::before { content: ""; position: absolute; left: 14px; top: 30px; bottom: 0; width: 2px; background: var(--line); }
+.path li:last-child::before { display: none; }
+.node {
+  width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--white); border: 2px solid var(--dusty); color: var(--dusty); position: relative; z-index: 1;
+}
+.node svg { width: 14px; height: 14px; display: block; }
+.node--leak { background: var(--coral); border-color: var(--coral); color: #fff; }
+.stop { min-width: 0; }
+.stop .row { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 30px; }
+.stop .area { font-family: var(--label); font-weight: 700; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--text); line-height: 1.4; }
+.level { display: inline-flex; align-items: center; gap: 8px; flex: none; }
+.level .word { font-family: var(--label); font-weight: 700; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--slate); white-space: nowrap; }
+.meter { display: inline-flex; gap: 3px; }
+.meter i { width: 14px; height: 6px; border-radius: 3px; background: var(--line); }
+.meter i.on { background: var(--dusty); }
+.stop .what { font-size: 15px; line-height: 1.5; margin-top: 1px; }
+
+/* bottleneck cards */
+.fix { padding: 28px 22px 22px; }
+.fix .h2 { margin-top: 8px; }
+.told { background: var(--gray); border-radius: 14px; padding: 16px 18px; margin-top: 18px; }
+.told ul { margin-top: 8px; display: grid; gap: 6px; }
+.told li { position: relative; padding-left: 16px; font-size: 15px; line-height: 1.5; }
+.told li::before { content: ""; position: absolute; left: 0; top: .62em; width: 6px; height: 6px; border-radius: 50%; background: var(--dusty); }
+.prose { margin-top: 18px; }
+.prose p + p { margin-top: 12px; }
+.h3 { font-family: var(--display); font-weight: 400; color: var(--dusty); font-size: 21px; line-height: 1.3; margin-top: 24px; }
+.steps { counter-reset: s; margin-top: 12px; display: grid; gap: 12px; }
+.steps li { counter-increment: s; position: relative; padding-left: 42px; min-height: 30px; line-height: 1.6; }
+.steps li::before {
+  content: counter(s); position: absolute; left: 0; top: -1px; width: 30px; height: 30px; border-radius: 50%;
+  border: 1px solid var(--dusty); color: var(--dusty); font-family: var(--display); font-size: 16px; line-height: 28px; text-align: center;
+}
+.bundle { background: var(--mint); border-radius: 14px; padding: 18px 18px 20px; margin-top: 24px; }
+.bundle ul { margin-top: 4px; }
+.bundle li { padding: 12px 0; border-bottom: 1px solid #DCE9E1; }
+.bundle li:last-child { border-bottom: 0; padding-bottom: 0; }
+.bundle .open { font-family: var(--display); font-size: 20px; line-height: 1.3; color: var(--slate); }
+.bundle .use { font-size: 15px; line-height: 1.55; margin-top: 3px; }
+.bundle .pill { margin-top: 12px; background: transparent; border-color: var(--slate); color: var(--slate); }
+.bundle .pill:hover { background: #E4F0E9; }
+
+.tighten { padding: 26px 22px; }
+.tighten ul { margin-top: 12px; display: grid; gap: 10px; }
+.tighten li { position: relative; padding-left: 16px; line-height: 1.55; }
+.tighten li::before { content: ""; position: absolute; left: 0; top: .66em; width: 6px; height: 6px; border-radius: 50%; background: var(--dusty); }
+
+.wrap { text-align: center; padding: 28px 22px; }
+.wrap p { max-width: 460px; margin: 0 auto; }
+.actions { display: grid; gap: 10px; margin: 20px auto 0; max-width: 360px; }
+.actions .btn, .actions .pill { width: 100%; }
+.foot { text-align: center; font-family: var(--label); font-weight: 700; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--dusty); margin-top: 20px; }
+.printhead { display: none; }
+
+/* ---------- Larger screens ---------- */
+@media (min-width: 700px) {
+  .shell { padding: 40px 24px 56px; }
+  .card { padding: 40px 44px; }
+  .start { padding: 60px 56px 52px; }
+  .q { padding: 44px 48px 30px; }
+  .q h1 { font-size: 34px; }
+  .opt { padding: 17px 20px; font-size: 17px; }
+  .topbar { margin-bottom: 14px; }
+  .rhead { padding: 52px 48px 44px; }
+  .fix { padding: 44px 48px 40px; }
+  .told { padding: 20px 24px; }
+  .bundle { padding: 24px 26px 26px; }
+  .tighten, .wrap { padding: 36px 48px; }
+  .results { gap: 18px; }
+  .actions { grid-template-columns: 1fr 1fr; max-width: 520px; }
+  .actions .btn { grid-column: 1 / -1; }
+  .stop .what { font-size: 16px; }
+  .meter i { width: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade { animation: none; }
+  .track i, .opt, .opt .dot::after { transition: none; }
+}
+
+/* ---------- Print / save as PDF ---------- */
+@media print {
+  @page { margin: 14mm; }
+  body { background: #fff; font-size: 12.5pt; }
+  .shell { display: block; padding: 0; min-height: 0; }
+  .col, .col--wide { max-width: none; }
+  .actions, .noprint { display: none !important; }
+  .printhead { display: block; text-align: center; margin-bottom: 10px; font-family: var(--label); font-weight: 700; font-size: 9pt; letter-spacing: 2px; text-transform: uppercase; color: var(--slate); }
+  .results { display: block; }
+  .results > * { margin-bottom: 12px; }
+  .card { break-inside: avoid; padding: 22px 26px; }
+  .fix { break-inside: auto; }
+  .told, .bundle, .steps li, .path li { break-inside: avoid; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .fade { animation: none; }
+}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<main id="app" class="shell shell--center"></main>
+<noscript>
+  <div style="max-width:520px;margin:60px auto;padding:28px;background:#fff;border:1px solid #DFE6E8;border-radius:18px;font-family:Helvetica,Arial,sans-serif;color:#555;text-align:center">
+    This quiz needs JavaScript. Turn it on in your browser settings, then reload the page.
+  </div>
+</noscript>
+
+<script>
+(function () {
+  'use strict';
+
+  /* =========================================================
+     DATA. Scoring is deterministic: every answer adds 0 to 3
+     "leak points" to one or more of the 12 leaks below.
+     ========================================================= */
+
+  var QUESTIONS = [
+    { id: 'stage', area: 'First things first', q: "Where's your product right now?",
+      opts: [
+        { t: "It's live, with its own checkout link" },
+        { t: "It's on Etsy or another marketplace", add: { PG3: 2 }, ev: "It's on Etsy or another marketplace.", flag: 'market' },
+        { t: "It's finished, but it's not up for sale yet", end: 'L2' },
+        { t: "I'm still making it", end: 'L1' }
+      ] },
+    { id: 'who', area: 'Your offer', q: "Who did you make it for?",
+      opts: [
+        { t: "One specific person. I could tell you what her Tuesday looks like." },
+        { t: "A group, like moms or small business owners", add: { O1: 2 }, ev: "You made it for a whole group." },
+        { t: "Anyone who wants it", add: { O1: 3 }, ev: "You made it for anyone who wants it." }
+      ] },
+    { id: 'asked', area: 'Your offer', q: "Has anyone ever asked you for help with this?",
+      help: "Out loud, in a comment, in a DM, at school pickup. Anywhere counts.",
+      opts: [
+        { t: "Yes. I hear about this problem all the time." },
+        { t: "Once or twice", add: { O2: 1 }, ev: "Only one or two people have asked you about this." },
+        { t: "No. It just seemed like a good idea.", add: { O2: 3 }, ev: "Nobody has asked you for it." }
+      ] },
+    { id: 'price', area: 'Your price', q: "What does it cost?",
+      opts: [
+        { t: "$27 or less", flag: 'lowprice' },
+        { t: "$28 to $49", add: { PR2: 1 }, ev: "It's priced between $28 and $49." },
+        { t: "$50 to $99", add: { PR1: 2 }, ev: "It's priced between $50 and $99." },
+        { t: "$100 or more", add: { PR1: 3 }, ev: "It's priced at $100 or more." }
+      ] },
+    { id: 'pricehow', area: 'Your price', q: "How did you land on that price?",
+      opts: [
+        { t: "On purpose. I picked a number a stranger can say yes to without thinking hard." },
+        { t: "I looked at what other people charge", add: { PR2: 2 }, ev: "You priced it by looking at what other people charge." },
+        { t: "I guessed", add: { PR2: 2 }, ev: "You guessed at the price." },
+        { t: "I added up my hours and what I think it's worth", add: { PR2: 2, PR1: 1 }, ev: "You priced it off your hours and what you think it's worth." }
+      ] },
+    { id: 'five', area: 'Your page', q: "A total stranger lands on your sales page. Five seconds later, what does she know?",
+      help: "This is the five-second test. Be honest!",
+      opts: [
+        { t: "What it is, who it's for, and what to do next. All three." },
+        { t: "Probably all three, but I've never tested it on a real person", add: { PG1: 1 }, ev: "You've never run the five-second test on a real person." },
+        { t: "What it is, but not who it's for or what to do next", add: { PG1: 2 }, ev: "A stranger can tell what it is, but not who it's for or what to do next." },
+        { t: "Not much, if I'm honest", add: { PG1: 3 }, ev: "A stranger can't tell much from your page in five seconds." }
+      ] },
+    { id: 'look', area: 'Your page', q: "What does she see of the product itself?",
+      opts: [
+        { t: "A mockup that shows it off, on a page that looks put together" },
+        { t: "A mockup, but the page around it looks thrown together", add: { PG4: 2 }, ev: "The page around your mockup looks thrown together." },
+        { t: "A plain cover or a screenshot", add: { PG2: 2 }, ev: "She sees a plain cover or a screenshot." },
+        { t: "No picture. Just words.", add: { PG2: 3, PG4: 1 }, ev: "There's no picture of the product on your page." }
+      ] },
+    { id: 'taps', area: 'Your page', q: "How many taps from your bio link to your buy button?",
+      help: "Count them on your phone if you're not sure.",
+      opts: [
+        { t: "One. My link goes straight to the product." },
+        { t: "Two or more. She lands on a list of links first.", add: { PG3: 2 }, ev: "Your link goes to a list of links first.", flag: 'linklist' },
+        { t: "I don't have a link up anywhere yet", add: { PG3: 3, T1: 1 }, ev: "You don't have a link up anywhere yet.", flag: 'nolink' }
+      ] },
+    { id: 'views', area: 'Your traffic', q: "About how many people have seen your sales page so far?",
+      help: "Wherever you built your page, look for views or visits.",
+      opts: [
+        { t: "More than 200" },
+        { t: "50 to 200", add: { T1: 1 }, ev: "Between 50 and 200 people have seen your page." },
+        { t: "Fewer than 50", add: { T1: 3 }, ev: "Fewer than 50 people have seen your page.", flag: 'gate' },
+        { t: "No idea", add: { T1: 2 }, ev: "You don't know how many people have seen your page." }
+      ] },
+    { id: 'posts', area: 'Your traffic', q: "In the last two weeks, how often did you post about it?",
+      opts: [
+        { t: "Most days" },
+        { t: "A few times", add: { T1: 1 }, ev: "You posted about it a few times in the last two weeks." },
+        { t: "Once or twice", add: { T1: 2 }, ev: "You posted about it once or twice in the last two weeks." },
+        { t: "I haven't", add: { T1: 3 }, ev: "You haven't posted about it in the last two weeks." }
+      ] },
+    { id: 'postkind', area: 'Your traffic', q: "When you do post about it, what's the post like?",
+      opts: [
+        { t: "It opens with her problem and tells her exactly what to do next" },
+        { t: "It's helpful, but there's no clear next step", add: { T2: 2 }, ev: "Your posts don't give her a clear next step." },
+        { t: "Mostly “it's here!” with the link", add: { T2: 3 }, ev: "Your posts mostly say it's here and share the link." },
+        { t: "I don't really post about it", add: { T2: 1, T1: 1 }, ev: "You don't really post about it." }
+      ] },
+    { id: 'sales', area: 'Your traffic', q: "Any sales yet?",
+      opts: [
+        { t: "Not one" },
+        { t: "A few right after I post, then nothing", add: { T3: 2 }, ev: "You get a few sales right after you post, then nothing." },
+        { t: "A few, from people who already know me", add: { T3: 1, T1: 1 }, ev: "Your sales have come from people who already know you." },
+        { t: "A slow trickle I'd love to grow", add: { T3: 2 }, ev: "You've got a slow trickle of sales." }
+      ] },
+    { id: 'follow', area: 'Your follow-up', q: "Someone's interested but doesn't buy today. What happens next?",
+      opts: [
+        { t: "She's on my email list, so she hears from me again" },
+        { t: "I message her myself when I remember", add: { F1: 1 }, ev: "You follow up by hand, when you remember." },
+        { t: "Nothing. She's gone.", add: { F1: 2 }, ev: "When someone doesn't buy, she's gone." }
+      ] }
+  ];
+
+  /* Tie-break order: what to fix first when two leaks score the same. */
+  var ORDER = ['T1', 'PG3', 'O1', 'O2', 'PG1', 'PG2', 'PR1', 'PR2', 'PG4', 'T2', 'F1', 'T3'];
+
+  /* The five areas, in the order a buyer meets them. */
+  var AREAS = [
+    { key: 'traffic', name: 'Traffic', solid: 'People are finding it.', codes: ['T1', 'T2', 'T3'] },
+    { key: 'page', name: 'Page', solid: 'Clear, and easy to buy from.', codes: ['PG3', 'PG1', 'PG2', 'PG4'] },
+    { key: 'offer', name: 'Offer', solid: 'Specific, and people are asking for it.', codes: ['O1', 'O2'] },
+    { key: 'price', name: 'Price', solid: 'Easy for a stranger to say yes to.', codes: ['PR1', 'PR2'] },
+    { key: 'follow', name: 'Email follow-up', solid: 'You can reach her again.', codes: ['F1'] }
+  ];
+  var LEVELS = ['Solid', 'Tighten', 'Leak', 'Big leak'];
+
+  var ITEMS = {
+    plan30: { name: '30-Day Social Media Marketing Plan', use: "A full month of content, mapped out day by day. Wake up, look at the plan, and you know what to post." },
+    stories: { name: 'Launch Day Story Prompts', use: "Exactly what to post on launch day. (Never really announced it? Start here.)" },
+    hooks: { name: 'Instagram Hook Bank', use: "Opening lines that stop the scroll. Pull a hook, fill in your details, post it." },
+    manychat: { name: 'ManyChat Mini Course', use: "Set up the automation that answers her comment and sends her your link." },
+    manychatF: { name: 'ManyChat Mini Course', use: "Set up one keyword that sends her your link and asks for her email." },
+    fbads: { name: 'Meta Ads Mini-Course', use: "Walks you through launching and setting up your first ad." },
+    detective: { name: 'Brand Detective', use: "It pins down who your buyer is, then gives you sales copy prompts built on your own voice." },
+    detectiveB: { name: 'Brand Detective', use: "No brand at all yet? Start here. It asks you the right questions and builds it with you." },
+    mockups: { name: 'Canva Mockup Template', use: "Make your product LOOK like a real product in about ten minutes." },
+    checklist: { name: 'Before You Launch Checklist', use: "Every box that needs ticking before you send people to your page." },
+    mts: { name: 'Made to Sell', use: "Module 2 sets up your checkout page and your delivery, so the whole thing runs without you." },
+    mtsL: { name: 'Made to Sell', use: "Module 2 sets up your checkout page and delivery. Module 3 gets it published." },
+    hacks: { name: '6-Figure Branding Hacks', use: "The tools and shortcuts I use to pick colors and fonts and get a professional look, fast." },
+    clarity: { name: 'Product Clarity Worksheet', use: "Get clear on what you made and who it's for before you write a word of copy." },
+    ideabot: { name: 'AI Product Idea Generator', use: "Tell it what you made and who it's for, then ask what that person is already trying to fix." },
+    ideas500: { name: '500 Digital Product Ideas', use: "Skim the ideas close to yours and notice which problems keep coming up." },
+    pricing: { name: 'Pricing Calculator', the: true, use: "Tell it what you made and what you want to earn. It gives you a price and how many sales it takes to get there.", href: 'https://pricing.thesimplecreator.com', cta: 'Open the Pricing Calculator' },
+    fasttrack: { name: 'Fast-Track Creation Companion', use: "You bring the idea. It helps you shape it, outline it and get it finished." },
+    books: { name: 'Bookkeeping Spreadsheet Template', use: "Log your sales and what you spend, so you always know where your money's going." }
+  };
+
+  var RESULTS = {
+    T1: {
+      area: 'traffic', short: 'Not enough eyes on it yet.', title: "Not enough people have seen it yet.",
+      body: [
+        "Friend, this is the good kind of problem! Not enough people have seen your page yet for “no sales” to mean anything. Even a page that's working only turns a small slice of its visitors into buyers.",
+        "So before you touch your price or rewrite a single word, get more eyes on it."
+      ],
+      steps: [
+        "Post about it every day for the next 30 days. You don't have to make it up as you go! Your plan tells you what to post each day.",
+        "Point every post at one place: your product page.",
+        "Check your page views once a week. Once a couple hundred people have seen it, take this quiz again."
+      ],
+      items: ['plan30', 'stories'],
+      tighten: "Get a few more eyes on your page before you change anything else."
+    },
+    T2: {
+      area: 'traffic', short: "Your posts don't point to it.", title: "Your posts aren't sending anyone to it.",
+      body: [
+        "Every post needs three things: a hook that stops the scroll, a body that delivers on it, and a trigger that tells her exactly what to do next.",
+        "Nobody reads line two if line one doesn't land. And with no next step, even the people who loved your post just keep scrolling."
+      ],
+      steps: [
+        "Pull a hook from your Instagram Hook Bank and fill in your details.",
+        "End every post with ONE next step. Comment a keyword, or tap the link.",
+        "Set up ManyChat so her comment gets her the link, even when you're nowhere near your phone."
+      ],
+      items: ['hooks', 'manychat'],
+      tighten: "Give every post one clear next step."
+    },
+    T3: {
+      area: 'traffic', short: 'It only sells when you post.', title: "It only sells when you're posting.",
+      body: [
+        "YAY you, by the way!! You've made sales, so the product works and the page works.",
+        "What's missing is steady traffic that doesn't depend on you showing up, or on people who already know you. That's what ads are for, and you can start small."
+      ],
+      steps: [
+        "Open your Meta Ads Mini-Course and set up your first ad.",
+        "Send that ad to the same page that's already making sales.",
+        "Leave your page alone while the ad runs, so you know what the ad is doing."
+      ],
+      items: ['fbads'],
+      tighten: "Your sales lean on people who already know you. Keep reaching new ones."
+    },
+    PG1: {
+      area: 'page', short: 'It fails the five-second test.', title: "Your page doesn't pass the five-second test.",
+      body: [
+        "A stranger gives your page about five seconds. In that time she needs to know what it is, who it's for, and what to do next. If she has to scroll around and piece it together, she's gone.",
+        "(It's really, really easy to lead with what's inside. Lead with what it fixes for her.)"
+      ],
+      steps: [
+        "Hand your phone to someone who's never seen your page. Count to five and take it back. Then ask her what it is, who it's for, and what she'd tap.",
+        "Rewrite the top of the page until she can answer all three. One headline, one line about who it's for, one button.",
+        "Stuck on the words? Open Brand Detective."
+      ],
+      items: ['detective'],
+      tighten: "Run the five-second test on a real person. You haven't yet!"
+    },
+    PG2: {
+      area: 'page', short: "She can't see the product.", title: "She can't see what she's buying.",
+      body: [
+        "A digital product is invisible until you show it. With a plain cover or a block of text, it feels like a file.",
+        "A mockup makes it LOOK like a real product, and it takes about ten minutes."
+      ],
+      steps: [
+        "Open your Canva Mockup Template and drop in your cover or a few inside pages.",
+        "Put that mockup at the very top of your sales page.",
+        "Use the same mockup in your posts, so people recognize it when they land on your page."
+      ],
+      items: ['mockups'],
+      tighten: "Add a mockup so she can see what she's buying."
+    },
+    PG3: {
+      area: 'page', short: "It's too hard to buy.", title: "It's too hard to buy.",
+      body: ["Every extra tap loses people."],
+      steps: [],
+      items: ['checklist', 'mts'],
+      tighten: "Make the path from your bio to your buy button one tap."
+    },
+    PG4: {
+      area: 'page', short: "It doesn't look trustworthy yet.", title: "Your page doesn't look like a real business yet.",
+      body: [
+        "When someone lands on your page, she decides in seconds whether to trust you, and a lot of that is how it looks. Fonts and colors that don't match can make a good product feel risky.",
+        "You don't need a designer or a big budget. A handful of shortcuts gets you there in a weekend."
+      ],
+      steps: [
+        "Open 6-Figure Branding Hacks and pick your colors and fonts.",
+        "Use those same colors and fonts on your page, your mockup and your posts."
+      ],
+      items: ['hacks', 'detectiveB'],
+      tighten: "Your page could look a little more put together. Peek at 6-Figure Branding Hacks."
+    },
+    O1: {
+      area: 'offer', short: "It's for everybody.", title: "It's for everybody, so nobody feels like it's for her.",
+      body: [
+        "The more specific, the better! I know it feels backwards. You're thinking, “If I get that specific, won't I push people away?” Yes. That's the goal.",
+        "“Moms” is too wide. “The mom Googling ways to make money from home at midnight” stops the right woman mid-scroll, because it sounds like you wrote it for HER."
+      ],
+      steps: [
+        "Fill out your Product Clarity Worksheet before you touch your page.",
+        "Write one sentence: “This is for the [specific person] who [specific situation].”",
+        "Put that sentence at the top of your page and in your next post."
+      ],
+      items: ['clarity'],
+      tighten: "Get more specific about who it's for."
+    },
+    O2: {
+      area: 'offer', short: "Nobody's asking for it yet.", title: "It's answering a question she isn't asking.",
+      body: [
+        "Your product can be great and still miss, because it's aimed at something she hasn't noticed she needs yet. People buy the fix for a problem they're already complaining about.",
+        "So lead with what she's noticing, in her own words, and let your product be the answer."
+      ],
+      steps: [
+        "Write down the last three things people around you complained about that your product helps with. (Can't think of any? Ask in your stories!)",
+        "Open your AI Product Idea Generator. Tell it what you made and who it's for, then ask what that person is already trying to fix.",
+        "Rewrite your headline so it opens with her complaint."
+      ],
+      items: ['ideabot', 'ideas500'],
+      tighten: "Only a couple of people have asked for this. Keep listening for how they describe the problem."
+    },
+    PR1: {
+      area: 'price', short: "It's a big ask for a stranger.", title: "The price is a big ask for someone who just met you.",
+      body: [
+        "She just met you! For a first digital product, the prices I teach are $17, $24 and $27, with $49 for something bulkier.",
+        "They're specific enough to feel deliberate, and low enough to sell to someone who's never heard of you. Yours is a bigger ask than that."
+      ],
+      steps: [
+        "Open the Pricing Calculator and run your numbers.",
+        "Change the price on your checkout page today.",
+        "Leave everything else alone for now, so you can tell if the price was the thing."
+      ],
+      items: ['pricing'],
+      tighten: "Pricing off your hours can push the number up. Check it in the Pricing Calculator."
+    },
+    PR2: {
+      area: 'price', short: 'Your price is a guess.', title: "Your price is a guess.",
+      body: [
+        "No shame here. Guessing, copying what other people charge, and adding up your hours all get you a number with no reason behind it. (And “price it based on your value” is no help when you're just starting!)",
+        "Here's what I teach: $17, $24 or $27 for a first product, and $49 for something bulkier. Specific enough to feel deliberate, low enough for a stranger to say yes."
+      ],
+      steps: [
+        "Open the Pricing Calculator and tell it what you made and what you want to earn.",
+        "Put the price it gives you on your checkout page."
+      ],
+      items: ['pricing'],
+      tighten: "Run your price through the Pricing Calculator, just to be sure it's on a sweet spot."
+    },
+    F1: {
+      area: 'follow', short: 'No way to reach her again.', title: "Interested people slip away.",
+      body: [
+        "She watches your post, thinks “ooh, I want that,” gets interrupted by a toddler, and never comes back. With no way to reach her again, that sale is gone.",
+        "A comment keyword fixes this! She comments, ManyChat sends her the link and asks for her email, and now you can follow up without touching your phone."
+      ],
+      steps: [
+        "Go through your ManyChat Mini Course and set up one keyword.",
+        "Add “Comment [KEYWORD] and I'll send it to you” to your next post.",
+        "Have the automation ask for her email before it sends the link."
+      ],
+      items: ['manychatF'],
+      tighten: "You're following up by hand. ManyChat can do that for you."
+    },
+    L1: {
+      title: "It's not selling because it's not finished.",
+      body: [
+        "DONE BEATS PERFECT. I mean that! The version in your head can't make a sale, and neither can the one that's almost done.",
+        "Friend, your only job right now is finishing. Come back and take this once it's live."
+      ],
+      steps: [
+        "Open your Fast-Track Creation Companion and let it help you shape it, outline it and finish it.",
+        "Pick a launch date this week and tell one person.",
+        "Run your Before You Launch Checklist, then publish."
+      ],
+      items: ['fasttrack', 'checklist']
+    },
+    L2: {
+      title: "Nobody can buy it yet.",
+      body: [
+        "You did the hard part! It's finished. But a finished product sitting in your Canva account can't sell.",
+        "Set up the checkout, tick the boxes and tell people it's here. It doesn't have to be perfect to go live."
+      ],
+      steps: [
+        "Open Made to Sell, Module 2, and set up your checkout page and delivery.",
+        "Run your Before You Launch Checklist.",
+        "Use your Launch Day Story Prompts to tell people it's here."
+      ],
+      items: ['mtsL', 'checklist', 'stories']
+    },
+    OK: {
+      title: "Keep going.",
+      body: [
+        "From your answers, I don't see a big leak anywhere. That's a real win! If sales are still slow, you need more eyes on it and a little more time.",
+        "One more thing, and hear my heart here. If you answered a few of those on the generous side, take it again and be really, really honest. The five-second test on a real person is a good place to start."
+      ],
+      steps: [
+        "Keep posting. Your 30-Day Social Media Marketing Plan tells you what to post each day.",
+        "Change one thing at a time, so you can tell what worked.",
+        "Write down every sale as it comes in."
+      ],
+      items: ['plan30', 'books']
+    }
+  };
+
+  /* =========================================================
+     SCORING
+     ========================================================= */
+  function score(answers) {
+    var pts = {}, ev = {}, flags = {}, end = null, i;
+    for (i = 0; i < ORDER.length; i++) { pts[ORDER[i]] = 0; ev[ORDER[i]] = []; }
+    for (i = 0; i < QUESTIONS.length; i++) {
+      var a = answers[QUESTIONS[i].id];
+      if (a === undefined || a === null) continue;
+      var o = QUESTIONS[i].opts[a];
+      if (!o) continue;
+      if (o.end) { end = o.end; break; }
+      if (o.flag) flags[o.flag] = true;
+      if (o.add) {
+        for (var k in o.add) {
+          if (Object.prototype.hasOwnProperty.call(o.add, k)) {
+            pts[k] += o.add[k];
+            if (o.ev) ev[k].push(o.ev);
+          }
+        }
+      }
+    }
+    if (end) return { end: end, pts: pts, ev: ev, flags: flags, top: [], minor: [] };
+
+    for (i = 0; i < ORDER.length; i++) if (pts[ORDER[i]] > 3) pts[ORDER[i]] = 3;
+    /* A guessed price that already sits at $27 or less is not a leak. */
+    if (flags.lowprice && pts.PR2 > 1) pts.PR2 = 1;
+
+    var ranked = ORDER.slice().sort(function (x, y) {
+      if (pts[y] !== pts[x]) return pts[y] - pts[x];
+      return ORDER.indexOf(x) - ORDER.indexOf(y);
+    });
+    /* The gate: under 50 page views always comes first. */
+    if (flags.gate) {
+      ranked.splice(ranked.indexOf('T1'), 1);
+      ranked.unshift('T1');
+    }
+    var top = [], minor = [];
+    for (i = 0; i < ranked.length; i++) {
+      if (pts[ranked[i]] < 2 || top.length >= 2) continue;
+      /* Both price leaks share one fix, so only the first one is shown. */
+      if (ranked[i] === 'PR2' && top.indexOf('PR1') > -1) continue;
+      top.push(ranked[i]);
+    }
+    for (i = 0; i < ORDER.length; i++) if (pts[ORDER[i]] === 1) minor.push(ORDER[i]);
+
+    var areas = [];
+    for (i = 0; i < AREAS.length; i++) {
+      var best = null, lvl = 0;
+      for (var j = 0; j < ranked.length; j++) {
+        if (AREAS[i].codes.indexOf(ranked[j]) > -1 && pts[ranked[j]] > lvl) { lvl = pts[ranked[j]]; best = ranked[j]; }
+      }
+      areas.push({ key: AREAS[i].key, name: AREAS[i].name, level: lvl, code: best,
+        what: lvl === 0 ? AREAS[i].solid : RESULTS[best].short });
+    }
+    return { end: null, pts: pts, ev: ev, flags: flags, top: top, minor: minor, areas: areas };
+  }
+
+  /* PG3 changes its wording with what she told us. */
+  function pg3(flags) {
+    var body = ["Every extra tap loses people."], steps;
+    if (flags.linklist) body[0] += " If she has to pick your product out of a list of links, a lot of them never make it to the buy button.";
+    if (flags.nolink) body[0] += " And with no link up anywhere, she has nowhere to go at all.";
+    if (flags.market) {
+      body.push("On a marketplace she's one tap from somebody else's product, and the marketplace keeps the customer. Your own checkout page fixes both.");
+      steps = [
+        "Set up your own checkout page. Made to Sell, Module 2 walks you through it.",
+        "Put ONE link in your bio, straight to that page. No list of links.",
+        "Run your Before You Launch Checklist before you send anyone to it."
+      ];
+    } else {
+      steps = [
+        "Put ONE link in your bio, straight to your product page. No list of links.",
+        "Buy it yourself on your phone, start to finish, and count the taps.",
+        "Run your Before You Launch Checklist before you send anyone to it."
+      ];
+    }
+    return { body: body, steps: steps };
+  }
+
+  /* =========================================================
+     STATE
+     ========================================================= */
+  var KEY = 'scc-diagnose-v1';
+  var state = { answers: {}, at: -1, done: false };
+
+  function load() {
+    try {
+      var raw = window.localStorage.getItem(KEY);
+      if (!raw) return;
+      var s = JSON.parse(raw);
+      if (s && typeof s === 'object' && s.answers && typeof s.answers === 'object') {
+        state.answers = s.answers;
+        state.at = typeof s.at === 'number' ? s.at : -1;
+        state.done = !!s.done;
+      }
+    } catch (e) { /* storage is off. The quiz still works, it just won't remember. */ }
+  }
+  function save() {
+    try { window.localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+  }
+  function reset() {
+    state = { answers: {}, at: -1, done: false };
+    try { window.localStorage.removeItem(KEY); } catch (e) {}
+  }
+
+  /* =========================================================
+     RENDER
+     ========================================================= */
+  var app = document.getElementById('app');
+  var ICON_CHECK = '<svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.4l3 3 6-6.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var ICON_DOT = '<svg viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="3" fill="currentColor"/></svg>';
+  var ICON_DROP = '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1.5c2 2.6 3.6 4.6 3.6 6.6a3.6 3.6 0 11-7.2 0C3.4 6.1 5 4.1 7 1.5z" fill="currentColor"/></svg>';
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function show(html, center) {
+    app.className = 'shell' + (center ? ' shell--center' : '');
+    app.innerHTML = html;
+    window.scrollTo(0, 0);
+    var h = app.querySelector('h1');
+    if (h) { h.setAttribute('tabindex', '-1'); try { h.focus({ preventScroll: true }); } catch (e) { h.focus(); } }
+  }
+
+  function renderStart() {
+    show(
+      '<div class="col fade"><section class="card start">' +
+        '<p class="eyebrow">Simple Creator Co.</p>' +
+        '<h1>Why isn’t it selling?</h1>' +
+        '<p>You made the thing. It’s live. And it’s... not really selling.</p>' +
+        '<p>I get it. I was there! Answer 13 quick questions and I’ll show you where the sale is getting stuck, what to fix first, and which part of your bundle to open.</p>' +
+        '<ul class="areas" aria-label="What the quiz looks at"><li>Offer</li><li>Price</li><li>Page</li><li>Traffic</li><li>Email</li></ul>' +
+        '<button class="btn" type="button" data-act="begin">Start the quiz</button>' +
+        '<p class="fine">About 3 minutes. Nothing to sign up for.</p>' +
+      '</section></div>', true);
+  }
+
+  function renderQuestion() {
+    var i = state.at, q = QUESTIONS[i], picked = state.answers[q.id];
+    var total = QUESTIONS.length;
+    var html = '<div class="col">' +
+      '<div class="topbar"><span class="name">Why Isn’t It Selling?</span>' +
+      '<span class="count">Question ' + (i + 1) + ' of ' + total + '</span></div>' +
+      '<div class="track" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="' + total + '" aria-valuenow="' + i + '"><i style="width:' + Math.round((i / total) * 100) + '%"></i></div>' +
+      '<section class="card q fade">' +
+        '<p class="eyebrow">' + esc(q.area) + '</p>' +
+        '<h1>' + esc(q.q) + '</h1>' +
+        (q.help ? '<p class="help">' + esc(q.help) + '</p>' : '') +
+        '<div class="opts" role="group" aria-label="Answers">';
+    for (var o = 0; o < q.opts.length; o++) {
+      html += '<button class="opt" type="button" data-act="pick" data-i="' + o + '" aria-pressed="' + (picked === o ? 'true' : 'false') + '">' +
+        '<span class="dot" aria-hidden="true"></span><span>' + esc(q.opts[o].t) + '</span></button>';
+    }
+    html += '</div></section>' +
+      '<div class="qnav">' +
+        '<button class="textbtn" type="button" data-act="back">Back</button>' +
+        (picked !== undefined ? '<button class="textbtn" type="button" data-act="next">Next</button>' : '<span></span>') +
+      '</div></div>';
+    show(html, false);
+  }
+
+  function bundleHTML(keys) {
+    var html = '<div class="bundle"><p class="eyebrow eyebrow--slate">Already in your bundle</p><ul>';
+    for (var i = 0; i < keys.length; i++) {
+      var it = ITEMS[keys[i]];
+      html += '<li><p class="open">Open ' + (it.the ? 'the ' : 'your ') + esc(it.name) + '</p>' +
+        '<p class="use">' + esc(it.use) + '</p>' +
+        (it.href ? '<a class="pill noprint" href="' + it.href + '" target="_blank" rel="noopener">' + esc(it.cta) + '</a>' : '') +
+        '</li>';
+    }
+    return html + '</ul></div>';
+  }
+
+  function fixHTML(code, label, r, evidence) {
+    var html = '<section class="card fix">' +
+      '<p class="eyebrow">' + label + '</p>' +
+      '<h2 class="h2">' + esc(r.title) + '</h2>';
+    if (evidence && evidence.length) {
+      html += '<div class="told"><p class="eyebrow eyebrow--slate">What you told me</p><ul>';
+      for (var e = 0; e < evidence.length; e++) html += '<li>' + esc(evidence[e]) + '</li>';
+      html += '</ul></div>';
+    }
+    html += '<div class="prose">';
+    for (var b = 0; b < r.body.length; b++) html += '<p>' + esc(r.body[b]) + '</p>';
+    html += '</div><h3 class="h3">Your fix</h3><ol class="steps">';
+    for (var s = 0; s < r.steps.length; s++) html += '<li>' + esc(r.steps[s]) + '</li>';
+    html += '</ol>' + bundleHTML(r.items) + '</section>';
+    return html;
+  }
+
+  function resolved(code, res) {
+    var r = RESULTS[code];
+    if (code !== 'PG3') return r;
+    var v = pg3(res.flags);
+    return { title: r.title, body: v.body, steps: v.steps, items: r.items };
+  }
+
+  function renderResults() {
+    var res = score(state.answers);
+    var html = '<div class="col col--wide"><div class="results fade">' +
+      '<p class="printhead">Why Isn’t It Selling? My results</p>';
+
+    if (res.end) {
+      html += '<section class="card rhead"><p class="eyebrow">Your diagnosis</p>' +
+        '<h1>Let’s get it live first.</h1>' +
+        '<p>I can’t tell you why it isn’t selling until people can buy it. So here’s your one job right now.</p></section>' +
+        fixHTML(res.end, 'Do this first', RESULTS[res.end], null);
+    } else {
+      var n = res.top.length;
+      html += '<section class="card rhead"><p class="eyebrow">Your diagnosis</p>';
+      if (n === 0) {
+        html += '<h1>Nothing’s badly broken.</h1><p>I looked at all five stops between her scroll and your buy button, and none of them is leaking badly.</p>';
+      } else if (n === 1) {
+        html += '<h1>One thing is in the way.</h1><p>Good news first! This looks like a marketing problem, and that’s the most fixable thing in your business.</p>';
+      } else {
+        html += '<h1>Two things are in the way.</h1><p>Good news first! This looks like a marketing problem, and that’s the most fixable thing in your business.</p><p>Start with the first one. Leave the second alone until it’s done.</p>';
+      }
+      html += '</section>';
+
+      html += '<section class="card"><h2 class="h2">Where the Sale Gets Stuck</h2>' +
+        '<p class="sub">Her path from first seeing you to buying, top to bottom.</p><ol class="path">';
+      for (var a = 0; a < res.areas.length; a++) {
+        var ar = res.areas[a], leak = ar.level >= 2;
+        html += '<li><span class="node' + (leak ? ' node--leak' : '') + '">' + (ar.level === 0 ? ICON_CHECK : (leak ? ICON_DROP : ICON_DOT)) + '</span>' +
+          '<div class="stop"><div class="row"><span class="area">' + esc(ar.name) + '</span>' +
+          '<span class="level"><span class="meter" aria-hidden="true">' +
+            '<i' + (ar.level >= 1 ? ' class="on"' : '') + '></i><i' + (ar.level >= 2 ? ' class="on"' : '') + '></i><i' + (ar.level >= 3 ? ' class="on"' : '') + '></i></span>' +
+          '<span class="word">' + LEVELS[ar.level] + '</span></span></div>' +
+          '<p class="what">' + esc(ar.what) + '</p></div></li>';
+      }
+      html += '</ol></section>';
+
+      if (n === 0) {
+        html += fixHTML('OK', 'What to do now', RESULTS.OK, null);
+        if (res.minor.length) {
+          html += '<section class="card tighten"><h2 class="h2">Small Things to Tighten</h2><ul>';
+          for (var m = 0; m < res.minor.length; m++) html += '<li>' + esc(RESULTS[res.minor[m]].tighten) + '</li>';
+          html += '</ul></section>';
+        }
+      } else {
+        for (var t = 0; t < n; t++) {
+          html += fixHTML(res.top[t], t === 0 ? 'Fix this first' : 'Then fix this', resolved(res.top[t], res), res.ev[res.top[t]]);
+        }
+      }
+    }
+
+    html += '<section class="card wrap">' +
+      '<p>' + (res.end ? 'Once it’s live, come back and take the full quiz.' : (res.top.length ? 'Change one thing at a time, so you can tell what worked. Then come back and take this again!' : 'Come back and take this again any time something changes.')) + '</p>' +
+      '<div class="actions">' +
+        '<button class="btn" type="button" data-act="print">Save or print my results</button>' +
+        '<button class="pill" type="button" data-act="copy">Copy as text</button>' +
+        '<button class="pill" type="button" data-act="restart">Start over</button>' +
+      '</div></section>' +
+      '<p class="foot">Simple Creator Co.</p>' +
+      '</div></div>';
+    show(html, false);
+  }
+
+  /* Plain-text version, for the copy button. */
+  function resultsText() {
+    var res = score(state.answers), L = [], i;
+    function block(label, r, evidence) {
+      L.push(label.toUpperCase() + ': ' + r.title);
+      if (evidence && evidence.length) { L.push('What you told me:'); for (var e = 0; e < evidence.length; e++) L.push('  - ' + evidence[e]); }
+      L.push('Your fix:');
+      for (var s = 0; s < r.steps.length; s++) L.push('  ' + (s + 1) + '. ' + r.steps[s]);
+      for (var k = 0; k < r.items.length; k++) {
+        var it = ITEMS[r.items[k]];
+        L.push('Open ' + (it.the ? 'the ' : 'your ') + it.name + (it.href ? ' (' + it.href + ')' : '') + '. ' + it.use);
+      }
+      L.push('');
+    }
+    L.push('WHY ISN’T IT SELLING? My results'); L.push('');
+    if (res.end) {
+      block('Do this first', RESULTS[res.end], null);
+    } else {
+      for (i = 0; i < res.areas.length; i++) L.push(res.areas[i].name + ': ' + LEVELS[res.areas[i].level] + '. ' + res.areas[i].what);
+      L.push('');
+      if (!res.top.length) {
+        block('What to do now', RESULTS.OK, null);
+        if (res.minor.length) { L.push('Small things to tighten:'); for (i = 0; i < res.minor.length; i++) L.push('  - ' + RESULTS[res.minor[i]].tighten); L.push(''); }
+      } else {
+        for (i = 0; i < res.top.length; i++) block(i === 0 ? 'Fix this first' : 'Then fix this', resolved(res.top[i], res), res.ev[res.top[i]]);
+      }
+    }
+    L.push('Simple Creator Co.');
+    return L.join('\n').replace(/[“”]/g, '"').replace(/’/g, "'");
+  }
+
+  function copyText(text, done) {
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.top = '0'; ta.style.left = '0'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      try { ta.setSelectionRange(0, text.length); } catch (e) {}
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      done(ok);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { done(true); }, fallback);
+    } else { fallback(); }
+  }
+
+  function render() {
+    if (state.done) return renderResults();
+    if (state.at < 0) return renderStart();
+    renderQuestion();
+  }
+
+  var busy = false;
+  function advance() {
+    var q = QUESTIONS[state.at], o = q.opts[state.answers[q.id]];
+    if ((o && o.end) || state.at >= QUESTIONS.length - 1) { state.done = true; }
+    else { state.at += 1; }
+    save(); render();
+  }
+
+  app.addEventListener('click', function (ev) {
+    var el = ev.target.closest ? ev.target.closest('[data-act]') : null;
+    if (!el || busy) return;
+    var act = el.getAttribute('data-act');
+    if (act === 'begin') { state.at = 0; save(); render(); }
+    else if (act === 'pick') {
+      var q = QUESTIONS[state.at], idx = parseInt(el.getAttribute('data-i'), 10);
+      state.answers[q.id] = idx;
+      var all = app.querySelectorAll('.opt');
+      for (var i = 0; i < all.length; i++) all[i].setAttribute('aria-pressed', i === idx ? 'true' : 'false');
+      save(); busy = true;
+      window.setTimeout(function () { busy = false; advance(); }, 240);
+    }
+    else if (act === 'next') { advance(); }
+    else if (act === 'back') { state.at -= 1; save(); render(); }
+    else if (act === 'print') { window.print(); }
+    else if (act === 'copy') {
+      copyText(resultsText(), function (ok) {
+        el.textContent = ok ? 'Copied!' : 'Couldn’t copy. Try save or print.';
+        window.setTimeout(function () { el.textContent = 'Copy as text'; }, 2600);
+      });
+    }
+    else if (act === 'restart') { reset(); render(); }
+  });
+
+  /* For testing and support: the scoring function, with no side effects. */
+  window.SCC_DIAGNOSE = { score: score, questions: QUESTIONS, order: ORDER };
+
+  load();
+  if (!state.done && (state.at >= QUESTIONS.length || (state.at >= 0 && !QUESTIONS[state.at]))) reset();
+  render();
+})();
+</script>
+</body>
+</html>
